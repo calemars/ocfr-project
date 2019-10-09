@@ -10,21 +10,25 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-md navbar-expand-lg navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">OCFR</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.html">OCFR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Register New User<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="register.html">Registration</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="reporting.html">Reporting</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="lists.html">Deatiled Lists</a>
+      <li class="nav-item dropdown active">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Detailed View<span class="sr-only">(current)</span></a>
+        <div class="dropdown-menu">
+          <a href="certs.html" class="dropdown-item">Certifications</a>
+          <a href="members.html" class="dropdown-item">Members</a>
+        </div>
       </li>
     </ul>
   </div>
