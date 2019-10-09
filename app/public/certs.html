@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Page Title</title>
+  <title>Certifications</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/site.css">
 </head>
@@ -27,15 +27,50 @@
   </div>
 </nav>
 
+<div class="container">
+  <div class="row">
+    <div id="mainContent" class="col-md">
+      <div id="patientRecordsApp">
+        <form @submit.prevent="handleSubmit">
+          <div class="form-group row">
+            <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Certification</label>
+             <div class="col-sm-10">
+               <br>
+              <select name="report" id="Report">
+                <option></option>
+                <option value="cpr">CPR</option>
+                <option value="due regard">Due Regard</option>
+                <option value="emr">EMR</option>
+                <option value="emt">EMT</option>
+                <option value="emtadv">EMT-Adv</option>
+                <option value="extrication">Extrication</option>
+                <option value="firefighteri">Firefighter I</option>
+                <option value="firefighterii">Firefighter II</option>
+                <option value="hazmat">HAZMAT</option>
+                <option value="paramedic">Paramedic</option>
+                <option value="post">POST</option>
 
+
+
+
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Filter Table</button>
+            </div>
+          </div>
+          </form>
           </br>
-          <h1>Certifications</h1>
+          <h1>Certification Information</h1>
             <table class="table table-sm table-hover">
               <thead>
                 <tr>
                   <th>Certification Name</th>
                   <th>Certifying Agency</th>
-                  <th>Default Expiration Period</th>
+                  <th>Standard Expiry</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,6 +103,63 @@
                   <td>POST</td>
                   <td>Georgia Post Academy</td>
                   <td>5 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </br>
+          <h1>Member Information</h1>
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Member Name</th>
+                  <th>Radio #</th>
+                  <th>Station #</th>
+                  <th>Expiry Date</th>
+                  <th>Expired (Y/N)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
+                </tr>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
+                </tr>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
+                </tr>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
+                </tr>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
+                </tr>
+                <tr>
+                  <td>memberName</td>
+                  <td>radio</td>
+                  <td>station</td>
+                  <td>expiry</td>
+                  <td>expired</td>
                 </tr>
               </tbody>
             </table>
