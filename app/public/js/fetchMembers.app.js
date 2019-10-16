@@ -10,7 +10,7 @@ var waitingApp = new Vue({
       .then(json => { waitingApp.patients = json })
     },
     handleRowClick(patient) {
-      patientRecordsApp.patient = patient[paitent];
+      patientRecordsApp.recordPatient = patient[paitent];
     },
     displayWaitingLocalDate(d) {
       return moment.utc(d).local().format("HH:mm MMM Do");
