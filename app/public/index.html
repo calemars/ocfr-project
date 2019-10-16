@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Page Title</title>
+  <title>Home Page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -11,143 +11,66 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">OCFR</a>
+  <a class="navbar-brand" href="index.html">OCFR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Register New User<span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="reporting.html">Reporting</a>
+        <a class="nav-link" href="register.html">Registration</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="lists.html">Deatiled Lists</a>
+      <li class="nav-item ">
+        <a class="nav-link" href="reporting.html">Reporting<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Detailed View</a>
+        <div class="dropdown-menu">
+          <a href="certs.html" class="dropdown-item">Certifications</a>
+          <a href="members.html" class="dropdown-item">Members</a>
+        </div>
       </li>
     </ul>
   </div>
 </nav>
 
-  <div class="container">
-    <div class="row"><button type="button" onclick="addRegistration()">Register Firefighter</button></div><br>
-    <form id="registration" @submit.prevent="handleSubmit" style="display:none">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="firstName">First Name</label>
-          <input class="form-control" id="firstName" placeholder="First Name">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="lastName">Last Name</label>
-          <input class="form-control" id="lastName" placeholder="Last Name">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="cellPhone">Cell Phone Number</label>
-          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="workPhone">Work Phone Number</label>
-          <input class="form-control" id="workPhone" placeholder="Work Phone Number">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="cellPhone">Station Number</label>
-          <input class="form-control" id="stationNumber" placeholder="Station Number">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="radioNumber">Radio Number</label>
-          <input class="form-control" id="radioNumber" placeholder="Radio Number">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputCity">City</label>
-          <input type="text" class="form-control" id="inputCity" placeholder="City">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputState">State</label>
-          <select id="inputState" class="form-control">
-            <option selected>Georgia</option>
-            <option>Alabama</option>
-            <option>Florida</option>
-            <option>Mississippi</option>
-            <option>South Carolina</option>
-            <option>Tennessee</option>
-          </select>
-        </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip">Zip</label>
-          <input type="text" class="form-control" id="inputZip" placeholder="Zip">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Complete Registration</button><br><br>
-    </form>
-    <div class="row"><button type="button" onclick="addCertification()">Add New Certification</button></div>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">OCFR Fire System</h1>
+    <p class="lead">This is a simple app to manage volunteers, certifications, and which volunteers have which certifications.</p>
+  </div>
+    <!-- Example row of columns -->
     <div class="row">
-      <div id="mainContent" class="col-md-12">
-        <div id="patientRecordsApp">
+      <div class="col-md-3">
+        <h2>Registration</h2>
+        <p>This page will allow the user to register new volunteers and new certifications.</p>
+        <br>
+        <p><a class="btn btn-secondary" href="register.html" role="button">Register &raquo;</a></p>
+      </div>
+      <div class="col-md-3">
+        <h2>Reporting</h2>
+        <p>This page will allow the user to basic reports on the volunteer and certification data.</p>
+        <p><a class="btn btn-secondary" href="reporting.html" role="button">Reporting &raquo;</a></p>
+      </div>
+      <div class="col-md-3">
+        <h2>Members</h2>
+        <p>This page will allow the user to see which certifications a member has. </p>
+        <br>
+        <p><a class="btn btn-secondary" href="members.html" role="button">Member &raquo;</a></p>
+      </div>
+      <div class="col-md-3">
+        <h2>Certifications</h2>
+        <p>This page will allow the user to see which membershave a certification. </p>
+        <br>
+        <p><a class="btn btn-secondary" href="certs.html" role="button">Certifications &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
 
 
-
-            <form id="certification" @submit.prevent="handleSubmit1" style="display:none">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="firstName">First Name</label>
-                  <input class="form-control" id="firstName" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="lastName">Last Name</label>
-                  <input class="form-control" id="lastName" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="cellPhone">Cell Phone Number</label>
-                  <input class="form-control" id="cellPhone" placeholder="Cell Phone Number">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="workPhone">Work Phone Number</label>
-                  <input class="form-control" id="workPhone" placeholder="Work Phone Number">
-                </div>
-              </div>
-            <button type="submit" class="btn btn-primary">Complete Certification</button>
-            </form>
-
-
-          </br>
-          <h1>Volunteers</h1>
-            <table class="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Cell Phone</th>
-                  <th>Work Phone</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-
-          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-          <script src="js/index.js"></script>
 </body>
 </html>
