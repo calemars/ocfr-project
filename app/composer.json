@@ -1,0 +1,14 @@
+{
+    "name": "calemars/ocfr-project",
+    "description": "D&S Final Project",
+    "license": "private",
+    "authors": [{
+        "name": "Caleb Marsh"
+    }],
+    "require": {
+      "ramsey/uuid": "^3.8"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}

@@ -36,40 +36,41 @@
 
   <div class="container">
     <div class="row"><button type="button" onclick="addRegistration()">Register Firefighter</button></div><br>
+    <div id="patientRecordsApp">
     <form id="registration" @submit.prevent="handleSubmit" style="display:none">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
-          <input class="form-control" id="firstName" placeholder="First Name">
+          <input class="form-control" id="firstName" placeholder="First Name" v-model="recordPatient.firstName">
         </div>
         <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
-          <input class="form-control" id="lastName" placeholder="Last Name">
+          <input class="form-control" id="lastName" placeholder="Last Name" v-model="recordPatient.lastName">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Cell Phone Number</label>
-          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number">
+          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number" v-model="recordPatient.mobilePhoneNum">
         </div>
         <div class="form-group col-md-6">
           <label for="workPhone">Work Phone Number</label>
-          <input class="form-control" id="workPhone" placeholder="Work Phone Number">
+          <input class="form-control" id="workPhone" placeholder="Work Phone Number" v-model="recordPatient.workPhoneNum">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Station Number</label>
-          <input class="form-control" id="stationNumber" placeholder="Station Number">
+          <input class="form-control" id="stationNumber" placeholder="Station Number" v-model="recordPatient.stationNumber">
         </div>
         <div class="form-group col-md-6">
           <label for="radioNumber">Radio Number</label>
-          <input class="form-control" id="radioNumber" placeholder="Radio Number">
+          <input class="form-control" id="radioNumber" placeholder="Radio Number" v-model="recordPatient.radioNumber">
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="recordPatient.address">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -94,6 +95,8 @@
       </div>
       <button type="submit" class="btn btn-primary">Complete Registration</button><br><br>
     </form>
+  </div>
+
     <div class="row"><button type="button" onclick="addCertification()">Add New Certification</button></div>
     <div class="row">
       <div id="mainContent" class="col-md-12">
@@ -121,6 +124,7 @@
 
 
           </br>
+          <div id="patientWaitingApp" >
           <h1>Volunteers</h1>
             <table class="table table-sm table-hover">
               <thead>
@@ -132,40 +136,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
+                <tr v-for="patient in patients" @click="handleRowClick(patient)">
+                  <td>{{ patient.firstName }}</td>
+                  <td>{{ patient.lastName }}</td>
+                  <td>{{ patient.mobilePhoneNum }}</td>
+                  <td>{{ patient.workPhoneNum }}</td>
+                  <td><input type='button'  value='Edit'  @click="handleRowClick(patient)" onclick="addRegistration()" ></td>
                   <td><input type='button'  value='Delete'></td>
                 </tr>
               </tbody>
             </table>
+        </div>
 
           </br>
           <h1>Certification Information</h1>
@@ -215,5 +196,8 @@
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
+          <script src="js/firefighter.app.js"></script>
+          <script src="js/fetchMembers.app.js"></script>
+          <script src="js/test.app.js"></script>
 </body>
 </html>
