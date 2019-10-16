@@ -93,9 +93,9 @@
               </tbody>
             </table>
           </br>
-          <div id="patientRecordApp">
+
           <h1>Member Information</h1>
-            <table class="table table-sm table-hover">
+            <table class="table table-sm table-hover" id="membersApp">
               <thead>
                 <tr>
                   <th>Member Name</th>
@@ -106,16 +106,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="patient in patients" @click="handleRowClick(patient)">
-                  <td>{{patient.memberName}}</td>
-                  <td>{{patient.radio}}</td>
-                  <td>{{patient.station}}</td>
-                  <td>{{patient.expiry}}</td>
-                  <td>{{patient.expired}}</td>
+                <tr v-for="member in members" @click="handleRowClick(patient)">
+                  <td>{{member.fullName}}</td>
+                  <td>{{member.radioNumber}}</td>
+                  <td>{{member.stationNumber}}</td>
+                  <td>{{member.expiry}}</td>
+                  <td>{{member.expired}}</td>
                 </tr>
               </tbody>
             </table>
-          </div>
+
         </div>
       </div>
     </div>
@@ -129,6 +129,7 @@
           <script src="js/test.app.js"></script>
           <script src="js/reporting.app.js"></script>
           <script src="js/certifications.app.js"></script>
+          <script src="js/members.app.js"></script>
 
 
           <script src="js/tablesort.min.js"></script>
