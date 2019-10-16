@@ -17,8 +17,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="register.html">Registration<span class="sr-only">(current)</span></a>
+      <li class="nav-item dropdown active">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Registration</a>
+        <div class="dropdown-menu">
+          <a href="register.html" class="dropdown-item">Members</a>
+          <a href="registerCert.html" class="dropdown-item">Certifications</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="reporting.html">Reporting</a>
@@ -35,41 +39,41 @@
 </nav>
 
   <div class="container">
-    <div class="row"><button type="button" onclick="addRegistration()">Register Firefighter</button></div><br>
-    <form id="registration" @submit.prevent="handleSubmit" style="display:none">
+    <div id="patientRecordsApp">
+    <form id="registration" @submit.prevent="handleSubmit">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
-          <input class="form-control" id="firstName" placeholder="First Name">
+          <input class="form-control" id="firstName" placeholder="First Name" v-model="recordPatient.firstName">
         </div>
         <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
-          <input class="form-control" id="lastName" placeholder="Last Name">
+          <input class="form-control" id="lastName" placeholder="Last Name" v-model="recordPatient.lastName">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Cell Phone Number</label>
-          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number">
+          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number" v-model="recordPatient.mobilePhoneNum">
         </div>
         <div class="form-group col-md-6">
           <label for="workPhone">Work Phone Number</label>
-          <input class="form-control" id="workPhone" placeholder="Work Phone Number">
+          <input class="form-control" id="workPhone" placeholder="Work Phone Number" v-model="recordPatient.workPhoneNum">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Station Number</label>
-          <input class="form-control" id="stationNumber" placeholder="Station Number">
+          <input class="form-control" id="stationNumber" placeholder="Station Number" v-model="recordPatient.stationNumber">
         </div>
         <div class="form-group col-md-6">
           <label for="radioNumber">Radio Number</label>
-          <input class="form-control" id="radioNumber" placeholder="Radio Number">
+          <input class="form-control" id="radioNumber" placeholder="Radio Number" v-model="recordPatient.radioNumber">
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="recordPatient.address">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -94,33 +98,10 @@
       </div>
       <button type="submit" class="btn btn-primary">Complete Registration</button><br><br>
     </form>
-    <div class="row"><button type="button" onclick="addCertification()">Add New Certification</button></div>
-    <div class="row">
-      <div id="mainContent" class="col-md-12">
-        <div id="patientRecordsApp">
-            <form id="certification" @submit.prevent="handleSubmit1" style="display:none">
-            </br>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="certName">Certification Name</label>
-                  <input class="form-control" id="certName" placeholder="Certification Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="certAgency">Certification Agency</label>
-                  <input class="form-control" id="certAgency" placeholder="Certification Agency">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="expDate">Expiration Date</label>
-                  <input type="date" class="form-control" id="expDate">
-                </div>
-              </div>
-            <button type="submit" class="btn btn-primary">Complete Certification</button>
-            </form>
-
+  </div>
 
           </br>
+          <div id="patientWaitingApp" >
           <h1>Volunteers</h1>
             <table class="table table-sm table-hover">
               <thead>
@@ -132,88 +113,25 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
-                  <td><input type='button'  value='Delete'></td>
-                </tr>
-                <tr>
-                  <td>firstName</td>
-                  <td>lastName</td>
-                  <td>cellPhone</td>
-                  <td>workPhone</td>
-                  <td><input type='button'  value='Edit'></td>
+                <tr v-for="patient in patients" @click="handleRowClick(patient)">
+                  <td>{{ patient.firstName }}</td>
+                  <td>{{ patient.lastName }}</td>
+                  <td>{{ patient.mobilePhoneNum }}</td>
+                  <td>{{ patient.workPhoneNum }}</td>
                   <td><input type='button'  value='Delete'></td>
                 </tr>
               </tbody>
             </table>
+        </div>
 
-          </br>
-          <h1>Certification Information</h1>
-            <table class="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th>Certification Name</th>
-                  <th>Certifying Agency</th>
-                  <th>Standard Expiry</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>certName</td>
-                  <td>certAgency</td>
-                  <td>certYear</td>
-                </tr>
-                <tr>
-                  <td>CPR</td>
-                  <td>American Heart Associations</td>
-                  <td>2 years</td>
-                </tr>
-                <tr>
-                  <td>CPR</td>
-                  <td>CPR for the Professional Rescuer</td>
-                  <td>2 years</td>
-                </tr>
-                <tr>
-                  <td>Firefighter I</td>
-                  <td>Athens Technical College</td>
-                  <td>3 years</td>
-                </tr>
-                <tr>
-                  <td>Firefighter I</td>
-                  <td>Ivy Technical College</td>
-                  <td>3 years</td>
-                </tr>
-                <tr>
-                  <td>POST</td>
-                  <td>Georgia Post Academy</td>
-                  <td>5 years</td>
-                </tr>
-              </tbody>
-            </table>
+
           </div>
 
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
+          <script src="js/firefighter.app.js"></script>
+          <script src="js/fetchMembers.app.js"></script>
+          <script src="js/test.app.js"></script>
 </body>
 </html>
