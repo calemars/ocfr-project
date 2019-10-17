@@ -42,7 +42,6 @@
   <div class="container">
     <div class="row">
       <div id="mainContent" class="col-md">
-        <div id="patientRecordsApp">
           <form @submit.prevent="handleSubmit">
             <div class="form-group row">
               <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Report</label>
@@ -58,7 +57,7 @@
               </div>
             </div>
 
-
+<div id="employeesApp">
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary">Filter Table</button>
@@ -66,10 +65,10 @@
             </div>
           </form>
           <h1>Reports</h1>
-          <table id="taskTable" class="table table-sm table-hover">
+          <table id="reportingApp" class="table table-sm table-hover">
             <thead>
               <tr>
-                <th <i class="fa fa-caret-down"></i>Last Name</th>
+                <th>Last Name</th>
                 <th>First Name</th>
                 <th>Certification</th>
                 <th>Exp. Date</th>
@@ -79,18 +78,29 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-              </tr>
+              <tr v-for="report in reports" @click="handleRowClick(p)">
+               <td>{{ report.lastName }}</td>
+               <td>{{ report.firstName }}</td>
+               <td>{{ report.certificationName }}</td>
+               <td>{{ report.expPeriod }}</td>
+               <td>{{ report.stationNumber}}</td>
+               <td>{{ report.radioNumber}}</td>
+               <td>{{ report.email}}</td>
+             </tr>
             </tbody>
           </table>
+</div>
 
-        </div>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="js/waiting.app.js"></script>
-  <script src="js/record.app.js"></script>
-  <script src="js/triage.app.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/firefighter.app.js"></script>
+  <script src="js/fetchMembers.app.js"></script>
+  <script src="js/test.app.js"></script>
+  <script src="js/reporting.app.js"></script>
+
 
   <script src="js/tablesort.min.js"></script>
 

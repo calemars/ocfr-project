@@ -41,7 +41,7 @@
 <div class="container">
   <div class="row">
     <div id="mainContent" class="col-md">
-      <div id="patientRecordsApp">
+
         <form @submit.prevent="handleSubmit">
           <div class="form-group row">
             <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Certification</label>
@@ -72,11 +72,11 @@
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary">Filter Table</button>
             </div>
-          </div>
+
           </form>
           </br>
           <h1>Certification Information</h1>
-            <table class="table table-sm table-hover">
+            <table id="certificationApp" class="table table-sm table-hover">
               <thead>
                 <tr>
                   <th>Certification Name</th>
@@ -85,41 +85,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>certName</td>
-                  <td>certAgency</td>
-                  <td>certYear</td>
-                </tr>
-                <tr>
-                  <td>CPR</td>
-                  <td>American Heart Associations</td>
-                  <td>2 years</td>
-                </tr>
-                <tr>
-                  <td>CPR</td>
-                  <td>CPR for the Professional Rescuer</td>
-                  <td>2 years</td>
-                </tr>
-                <tr>
-                  <td>Firefighter I</td>
-                  <td>Athens Technical College</td>
-                  <td>3 years</td>
-                </tr>
-                <tr>
-                  <td>Firefighter I</td>
-                  <td>Ivy Technical College</td>
-                  <td>3 years</td>
-                </tr>
-                <tr>
-                  <td>POST</td>
-                  <td>Georgia Post Academy</td>
-                  <td>5 years</td>
+                <tr v-for="certification in certifications" @click="handleRowClick(patient)">
+                  <td>{{ certification.certificationName }}</td>
+                  <td>{{ certification.certifyingAgency }}</td>
+                  <td>{{ certification.expPeriod }}</td>
                 </tr>
               </tbody>
             </table>
           </br>
+
           <h1>Member Information</h1>
-            <table class="table table-sm table-hover">
+            <table class="table table-sm table-hover" id="membersApp">
               <thead>
                 <tr>
                   <th>Member Name</th>
@@ -130,54 +106,40 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
-                </tr>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
-                </tr>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
-                </tr>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
-                </tr>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
-                </tr>
-                <tr>
-                  <td>memberName</td>
-                  <td>radio</td>
-                  <td>station</td>
-                  <td>expiry</td>
-                  <td>expired</td>
+                <tr v-for="member in members" @click="handleRowClick(patient)">
+                  <td>{{member.fullName}}</td>
+                  <td>{{member.radioNumber}}</td>
+                  <td>{{member.stationNumber}}</td>
+                  <td>{{member.expiry}}</td>
+                  <td>{{member.expired}}</td>
                 </tr>
               </tbody>
             </table>
-          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
+          <script src="js/firefighter.app.js"></script>
+          <script src="js/fetchMembers.app.js"></script>
+          <script src="js/test.app.js"></script>
+          <script src="js/reporting.app.js"></script>
+          <script src="js/certifications.app.js"></script>
+          <script src="js/members.app.js"></script>
+
+
+          <script src="js/tablesort.min.js"></script>
+
+        <!--  tablesort plugin from: https://github.com/tristen/tablesort //-->
+
+          <script>
+
+          new Tablesort(document.getElementById('taskTable'));
+
+          </script>
 </body>
 </html>
