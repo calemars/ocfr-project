@@ -16,7 +16,7 @@ $stmt->execute([
   $_POST['lastName'],
   $_POST['radioNumber'],
   $_POST['mobilePhoneNum'],
-  $_POST['workPhoneNum'],
+  $_POST['workPhoneNum']
 ]);
 // Step 4: Output
 //header('HTTP/1.1 303 See Other');
