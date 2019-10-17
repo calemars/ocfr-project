@@ -39,41 +39,42 @@
 </nav>
 
   <div class="container">
-    <div id="patientRecordsApp">
-    <form id="registration" @submit.prevent="handleSubmit">
+    <div id="employeesApp">
+      <div class="row"><button type="button" onclick="addRegistration()">Register Firefighter</button></div><br>
+    <form id="registration" @submit.prevent="handleCreate" style="display:none">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
-          <input class="form-control" id="firstName" placeholder="First Name" v-model="recordPatient.firstName">
+          <input class="form-control" id="firstName" placeholder="First Name" v-model="recordemployees.firstName">
         </div>
         <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
-          <input class="form-control" id="lastName" placeholder="Last Name" v-model="recordPatient.lastName">
+          <input class="form-control" id="lastName" placeholder="Last Name" v-model="recordemployees.lastName">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Cell Phone Number</label>
-          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number" v-model="recordPatient.mobilePhoneNum">
+          <input class="form-control" id="cellPhone" placeholder="Cell Phone Number" v-model="recordemployees.mobilePhoneNum">
         </div>
         <div class="form-group col-md-6">
           <label for="workPhone">Work Phone Number</label>
-          <input class="form-control" id="workPhone" placeholder="Work Phone Number" v-model="recordPatient.workPhoneNum">
+          <input class="form-control" id="workPhone" placeholder="Work Phone Number" v-model="recordemployees.workPhoneNum">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cellPhone">Station Number</label>
-          <input class="form-control" id="stationNumber" placeholder="Station Number" v-model="recordPatient.stationNumber">
+          <input class="form-control" id="stationNumber" placeholder="Station Number" v-model="recordemployees.stationNumber">
         </div>
         <div class="form-group col-md-6">
           <label for="radioNumber">Radio Number</label>
-          <input class="form-control" id="radioNumber" placeholder="Radio Number" v-model="recordPatient.radioNumber">
+          <input class="form-control" id="radioNumber" placeholder="Radio Number" v-model="recordemployees.radioNumber">
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="recordPatient.address">
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="recordemployees.address">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -98,12 +99,10 @@
       </div>
       <button type="submit" class="btn btn-primary">Complete Registration</button><br><br>
     </form>
-  </div>
 
           </br>
-          <div id="patientWaitingApp" >
           <h1>Volunteers</h1>
-            <table class="table table-sm table-hover">
+            <table class="table table-sm table-hover" id="employeesApp">
               <thead>
                 <tr>
                   <th>First Name</th>
@@ -113,25 +112,86 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="patient in patients" @click="handleRowClick(patient)">
-                  <td>{{ patient.firstName }}</td>
-                  <td>{{ patient.lastName }}</td>
-                  <td>{{ patient.mobilePhoneNum }}</td>
-                  <td>{{ patient.workPhoneNum }}</td>
+
+                <tr v-for="e in employees" @click="handleRowClick(e)">
+                  <td>{{ e.firstName }}</td>
+                  <td>{{ e.lastName }}</td>
+                  <td>{{ e.mobilePhoneNum }}</td>
+                  <td>{{ e.workPhoneNum }}</td>
                   <td><input type='button'  value='Delete'></td>
                 </tr>
               </tbody>
             </table>
+            </div>
+          </br>
+          </br>
+          <div id="employeesEditApp" >
+            <form id="editRegistration" @submit.prevent="handleSubmit">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="firstName">First Name</label>
+                  <input class="form-control" id="firstName" placeholder="First Name" v-model="employeeData.firstName">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Last Name</label>
+                  <input class="form-control" id="lastName" placeholder="Last Name" v-model="employeeData.lastName">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="cellPhone">Cell Phone Number</label>
+                  <input class="form-control" id="cellPhone" placeholder="Cell Phone Number" v-model="employeeData.mobilePhoneNum">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="workPhone">Work Phone Number</label>
+                  <input class="form-control" id="workPhone" placeholder="Work Phone Number" v-model="employeeData.workPhoneNum">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="cellPhone">Station Number</label>
+                  <input class="form-control" id="stationNumber" placeholder="Station Number" v-model="employeeData.stationNumber">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="radioNumber">Radio Number</label>
+                  <input class="form-control" id="radioNumber" placeholder="Radio Number" v-model="employeeData.radioNumber">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="employeeData.address">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity" placeholder="City">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Georgia</option>
+                    <option>Alabama</option>
+                    <option>Florida</option>
+                    <option>Mississippi</option>
+                    <option>South Carolina</option>
+                    <option>Tennessee</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip" placeholder="Zip">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Edit Registration</button><br><br>
+            </form>
         </div>
 
-
-          </div>
+</div>
 
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
-          <script src="js/firefighter.app.js"></script>
-          <script src="js/fetchMembers.app.js"></script>
-          <script src="js/test.app.js"></script>
+          <script src="js/members.app.js"></script>
+          <script src="js/editMembers.app.js"></script>
 </body>
 </html>
