@@ -41,7 +41,7 @@
 <div class="container">
   <div class="row">
     <div id="mainContent" class="col-md">
-
+      
         <form @submit.prevent="handleSubmit">
           <div class="form-group row">
             <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Certification</label>
@@ -60,10 +60,6 @@
                 <option value="hazmat">HAZMAT</option>
                 <option value="paramedic">Paramedic</option>
                 <option value="post">POST</option>
-
-
-
-
               </select>
             </div>
           </div>
@@ -95,7 +91,7 @@
           </br>
 
           <h1>Member Information</h1>
-            <table class="table table-sm table-hover" id="membersApp">
+            <table class="table table-sm table-hover" id="employeesApp">
               <thead>
                 <tr>
                   <th>Member Name</th>
@@ -106,12 +102,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="member in members" @click="handleRowClick(patient)">
-                  <td>{{member.fullName}}</td>
-                  <td>{{member.radioNumber}}</td>
-                  <td>{{member.stationNumber}}</td>
-                  <td>{{member.expiry}}</td>
-                  <td>{{member.expired}}</td>
+                <tr v-for="e in employees" @click="handleRowClick(patient)">
+                  <td>{{e.firstName}} {{e.lastName}}</td>
+                  <td>{{e.radioNumber}}</td>
+                  <td>{{e.stationNumber}}</td>
+                  <td>{{e.expiry}}</td>
+                  <td>{{e.expired}}</td>
                 </tr>
               </tbody>
             </table>
