@@ -16,6 +16,17 @@ var employeesEditApp = new Vue({
 
       this.handleReset();
     },
+    handleDelete() {
+      fetch('api/members/deleteMember.php', {
+        method:'POST',
+        body: JSON.stringify(this.employeeData),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+
+      this.handleReset();
+    },
     handleReset() {
       this.employeeData = {
         memberGuid: '',
@@ -29,7 +40,11 @@ var employeesEditApp = new Vue({
         dob: '',
         positionTitle: '',
         stationNumber: '',
-        address: ''
+        address: '',
+        gender: '',
+        city: '',
+        state: '',
+        zip: ''
       }
     }
 

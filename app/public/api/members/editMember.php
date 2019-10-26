@@ -3,17 +3,26 @@
 $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
-  ''
+  "update Members set firstName=?, lastName=?, dob=?, gender=?, isActive=?, email=?, mobilePhoneNum=?, positionTitle=?, stationNumber=?, radioNumber=?, address=?, city=?, state=?, zip=? where memberGuid=?;"
 );
 
 $stmt->execute([
-  $_POST['memberGuid'],
   $_POST['firstName'],
   $_POST['lastName'],
-  $_POST['radioNumber'],
+  $_POST['dob'],
+  $_POST['gender'],
+  $_POST['isActive'],
+  $_POST['email'],
   $_POST['mobilePhoneNum'],
-  $_POST['workPhoneNum']  // i.e. 25769c6c-d34d-4bfe-ba98-e0ee856f3e7a
+  $_POST['positionTitle'],
+  $_POST['stationNumber'],
+  $_POST['radioNumber'],
+  $_POST['address'],
+  $_POST['city'],
+  $_POST['state'],
+  $_POST['zip'],
+  $_POST['memberGuid']
 ]);
 // Step 4: Output
-header('HTTP/1.1 303 See Other');
-header('Location: ../employee/?personid='.$personid);
+//header('HTTP/1.1 303 See Other');
+//header('Location: ../employee/?personid='.$personid);

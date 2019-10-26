@@ -21,11 +21,6 @@ var employeesApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => { employeesApp.employees.push( json[0] ) })
-      .catch( err => {
-        console.error('RECORD POST ERROR:');
-        console.error(err);
-     });
-     this.fetchemployees();
      this.handleReset();
       },
       handleReset() {
@@ -41,7 +36,11 @@ var employeesApp = new Vue({
           dob: '',
           positionTitle: '',
           stationNumber: '',
-          address: ''
+          address: '',
+          gender: '',
+          city: '',
+          state: '',
+          zip: ''
         }
       },
     handleRowClick(employeeData) {

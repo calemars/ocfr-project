@@ -20,7 +20,7 @@ var registerCert = new Vue({
         }
       })
       .then( response => response.json() )
-      .then( json => { registerCert.certifications.push( json[0] ) })
+      .then( json => { registerCert.certifications.push( certification ) })
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);
@@ -29,16 +29,16 @@ var registerCert = new Vue({
      this.handleReset();
       },
       handleReset() {
-        this.recordemployees = {
+        this.certification = {
           certificationGuid: '',
           certifyingAgency: '',
           certificationName: '',
           expPeriod: ''
         }
       },
-    handleRowClick(employeeData) {
-      employeesEditApp.employeeData = employeeData;
-    }
+      handleRowClick(certification) {
+        certEditApp.certification = certification;
+      }
 }, // end methods
     created() {
       this.handleReset();

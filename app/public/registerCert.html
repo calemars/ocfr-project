@@ -44,7 +44,8 @@
     <div class="row">
       <div id="mainContent" class="col-md-12">
         <div id="registerCert">
-            <form id="certification" @submit.prevent="handleCreate">
+          <div class="row"><button type="button"class="btn btn-primary" onclick="addCertification()">Register Certification</button></div><br>
+            <form id="certification" @submit.prevent="handleCreate"  style="display:none">
             </br>
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -58,8 +59,8 @@
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="expDate">Expiration Date</label>
-                  <input class="form-control" placeholder="Standard Experation" id="expDate" v-model="certification.expDate">
+                  <label for="expPeriod">Expiration Period</label>
+                  <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
                 </div>
               </div>
             <button type="submit" class="btn btn-primary">Complete Certification</button>
@@ -68,7 +69,7 @@
 
           </br>
           <h1>Certification Information</h1>
-            <table class="table table-sm table-hover">
+            <table class="table table-sm table-hover" id="registerCert">
               <thead>
                 <tr>
                   <th>Certification Name</th>
@@ -77,18 +78,49 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="c in certifications">
-                  <td>{{c.certificationName}}</td>
-                  <td>{{c.certifyingAgency}}</td>
-                  <td>{{c.expDate}}</td>
+                <tr v-for="certification in certifications" @click="handleRowClick(certification)">
+                  <td>{{certification.certificationName}}</td>
+                  <td>{{certification.certifyingAgency}}</td>
+                  <td>{{certification.expPeriod}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+
+          <div id="certEditApp">
+          <form @submit.prevent="handleEdit">
+          </br>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="certName">Certification Name</label>
+                <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="certAgency">Certification Agency</label>
+                <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="expPeriod">Expiration Period</label>
+                <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
+              </div>
+            </div>
+          <button type="submit" class="btn btn-primary">Edit Certification</button>
+          </form>
+        </br>
+          <form @submit.prevent="handleDelete"><button class="btn btn-primary">Delete Member</button></form>
+          </div>
+        </div>
+</br>
+</br>
 
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
           <script src="js/certs.app.js"></script>
+          <script src="js/editCerts.app.js"></script>
 </body>
 </html>

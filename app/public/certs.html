@@ -41,25 +41,14 @@
 <div class="container">
   <div class="row">
     <div id="mainContent" class="col-md">
-      
-        <form @submit.prevent="handleSubmit">
+      <div id="certificationApp" @submit.prevent="handleSubmit(selectedCert)">
+        <form>
           <div class="form-group row">
             <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Certification</label>
              <div class="col-sm-10">
                <br>
-              <select name="report" id="Report">
-                <option></option>
-                <option value="cpr">CPR</option>
-                <option value="due regard">Due Regard</option>
-                <option value="emr">EMR</option>
-                <option value="emt">EMT</option>
-                <option value="emtadv">EMT-Adv</option>
-                <option value="extrication">Extrication</option>
-                <option value="firefighteri">Firefighter I</option>
-                <option value="firefighterii">Firefighter II</option>
-                <option value="hazmat">HAZMAT</option>
-                <option value="paramedic">Paramedic</option>
-                <option value="post">POST</option>
+              <select id="selectedCertification" class="form-control" v-model="selectedCert">
+                <option v-for="certification in certifications" v-bind:value="certification"> {{certification.certificationName}} </option>
               </select>
             </div>
           </div>
@@ -70,6 +59,10 @@
             </div>
 
           </form>
+<div id="certificationApp">
+  <p> {{selectedCert.certificationGuid}}</p>
+</div>
+
           </br>
           <h1>Certification Information</h1>
             <table id="certificationApp" class="table table-sm table-hover">
@@ -81,7 +74,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="certification in certifications" @click="handleRowClick(patient)">
+                <tr v-for="certification in certifications" @click="handleRowClick(certification)">
                   <td>{{ certification.certificationName }}</td>
                   <td>{{ certification.certifyingAgency }}</td>
                   <td>{{ certification.expPeriod }}</td>
@@ -89,6 +82,8 @@
               </tbody>
             </table>
           </br>
+        </div>
+      </div>
 
           <h1>Member Information</h1>
             <table class="table table-sm table-hover" id="employeesApp">
@@ -102,7 +97,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="e in employees" @click="handleRowClick(patient)">
+                <tr v-for="e in employees">
                   <td>{{e.firstName}} {{e.lastName}}</td>
                   <td>{{e.radioNumber}}</td>
                   <td>{{e.stationNumber}}</td>
@@ -119,14 +114,8 @@
 
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-          <script src="js/index.js"></script>
-          <script src="js/firefighter.app.js"></script>
-          <script src="js/fetchMembers.app.js"></script>
-          <script src="js/test.app.js"></script>
-          <script src="js/reporting.app.js"></script>
           <script src="js/certifications.app.js"></script>
-          <script src="js/members.app.js"></script>
-
+          <script src="js/members.app.js"
 
           <script src="js/tablesort.min.js"></script>
 

@@ -6,7 +6,7 @@
 
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
-$stmt = $db->prepare('SELECT certificationName, certifyingAgency, expPeriod
+$stmt = $db->prepare('SELECT certificationGuid, certificationName, certifyingAgency, expPeriod
                       FROM Certifications');
 $stmt->execute();
 $certifications = $stmt->fetchAll();
