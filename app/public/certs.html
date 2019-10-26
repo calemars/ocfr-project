@@ -85,7 +85,7 @@
         </div>
       </div>
 
-          <h1>Member Information</h1>
+          <div id="certificationApp"><h1>Member Information</h1></div>
             <table class="table table-sm table-hover" id="employeesApp">
               <thead>
                 <tr>
@@ -94,6 +94,7 @@
                   <th>Station #</th>
                   <th>Expiry Date</th>
                   <th>Expired (Y/N)</th>
+                  <th>Certification Name</th>
                 </tr>
               </thead>
               <tbody>
@@ -103,6 +104,7 @@
                   <td>{{e.stationNumber}}</td>
                   <td>{{e.expiry}}</td>
                   <td>{{e.expired}}</td>
+                  <td>{{e.certificationName}}</td>
                 </tr>
               </tbody>
             </table>
