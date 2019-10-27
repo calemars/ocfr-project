@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Register Certifications</title>
+  <title>My Page Title</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -49,24 +49,28 @@
 
     <div class="row">
       <div id="mainContent" class="col-md-12">
-        <div id="registerCert">
-          <div class="row"><button type="button"class="btn btn-primary" onclick="addCertification()">Register Certification</button></div><br>
-            <form id="certification" @submit.prevent="handleCreate"  style="display:none">
+        <div id="assignCert">
+          <div class="row"><button type="button"class="btn btn-primary" onclick="addCertification()">Assign Certification</button></div><br>
+            <form id="certification" @submit.prevent="handleCreate" style="display:none">
             </br>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="certName">Certification Name</label>
-                  <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName">
+                <div class="form-group col-md-4">
+                  <label for="certAgency">Certification Name</label>
+                  <select v-model="newCertMember.certificationGuid">
+                    <option v-for="cert in certifications" :value="cert.certificationGuid">{{ cert.certificationName }}</option>
+                  </select>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="certAgency">Certification Agency</label>
-                  <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency">
+                <div class="form-group col-md-4">
+                  <label for="certAgency">Member Name</label>
+                  <select v-model="newCertMember.memberGuid">
+                    <option v-for="member in members" :value="member.memberGuid">{{ member.firstName }} {{ member.lastName }}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="expPeriod">Expiration Period</label>
-                  <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
+                <div class="form-group col-md-4">
+                  <label for="expPeriod">Expiration Date</label>
+                  <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="newCertMember.certExpDate">
                 </div>
               </div>
             <button type="submit" class="btn btn-primary">Complete Certification</button>
@@ -74,51 +78,55 @@
 
 
           </br>
-          <h1>Certification Information</h1>
-            <table class="table table-sm table-hover" id="registerCert">
-              <thead>
-                <tr>
-                  <th>Certification Name</th>
-                  <th>Certifying Agency</th>
-                  <th>Standard Expiry</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="certification in certifications" @click="handleRowClick(certification)">
-                  <td>{{certification.certificationName}}</td>
-                  <td>{{certification.certifyingAgency}}</td>
-                  <td>{{certification.expPeriod}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+          <h1>Current Certification Information</h1>
+          <table class="table table-sm table-hover" id="assignCert">
+            <thead>
+              <tr>
+                <th>Member Name</th>
+                <th>Radio #</th>
+                <th>Station #</th>
+                <th>Certification Name</th>
+                <th>Expiry Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="mc in currentCerts" @click="handleRowClick(mc)">
+                <td>{{mc.firstName}} {{mc.lastName}}</td>
+                <td>{{mc.radioNumber}}</td>
+                <td>{{mc.stationNumber}}</td>
+                <td>{{mc.certificationName}}</td>
+                <td>{{mc.certExpDate}}</td>
+              </tr>
+            </tbody>
+          </table>
 
-          <div id="certEditApp">
-          <form @submit.prevent="handleEdit">
+          <form id="assignCert" @submit.prevent="handleDelete">
           </br>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="certName">Certification Name</label>
-                <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName">
+                <label for="certAgency">Certification Name</label>
+                <select v-model="selectedCertMember.certificationGuid">
+                  <option v-for="cert in certifications" :value="cert.certificationGuid">{{ cert.certificationName }}</option>
+                </select>
               </div>
               <div class="form-group col-md-6">
-                <label for="certAgency">Certification Agency</label>
-                <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency">
+                <label for="certAgency">Member Name</label>
+                <select v-model="selectedCertMember.memberGuid">
+                  <option v-for="member in members" :value="member.memberGuid">{{ member.firstName }} {{ member.lastName }}</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="expPeriod">Expiration Period</label>
-                <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
+              <div class="form-group col-md-4">
+                <label for="expPeriod">Expiration Date</label>
+                <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="selectedCertMember.certExpDate">
               </div>
             </div>
-          <button type="submit" class="btn btn-primary">Edit Certification</button>
+          <button type="submit" class="btn btn-primary">Delete Certification</button>
           </form>
-        </br>
-          <form @submit.prevent="handleDelete"><button class="btn btn-primary">Delete Certification</button></form>
           </div>
+        </div>
+      </div>
         </div>
 </br>
 </br>
@@ -126,7 +134,6 @@
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
-          <script src="js/certs.app.js"></script>
-          <script src="js/editCerts.app.js"></script>
+          <script src="js/assignCert.app.js"></script>
 </body>
 </html>
