@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="index.html">OCFR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -40,49 +40,155 @@
 
 
 <div class="container">
-  <div class="jumbotron">
-    <h1 class="display-4">OCFR Fire System</h1>
-    <p class="lead">This is a simple app to manage volunteers, certifications, and which volunteers have which certifications.</p>
+  <div class="jumbotron" style="background-color:white; border-bottom: 5px solid #990000; border-top: 5px solid #990000">
+    <h1 align="center" style="font-weight: bold"><img src="images/ocfrlogo.png" height="150px" alt="OCFR Logo" style="padding-bottom: 15px;">   OCFR Member Portal    </h1>
+    <p class="lead">Welcome to the OCFR Member Portal! Here, you can keep track of all the OCFR members, their contact information, and the certification status of all current and former members.</p>
   </div>
+
+
     <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Register Firefighters</h2>
-        <p>This page will allow the user to register new volunteers.</p>
-        <br>
-        <p><a class="btn btn-secondary" href="register.html" role="button">Register &raquo;</a></p>
+
+<!-- <section id="homepage" class="col-xl-8 col-lg-8 col-md-8">
+    <div class="container col-xl-12 col-lg-12 col-md-12">
+      <div class="title-block">
+        <h2>Home Page Options</h2>
+        <p>Scroll down to see a variety of options of the things you can do.</p>
       </div>
-      <div class="col-md-4">
-        <h2>Register Firefighters</h2>
-        <p>This page will allow the user to register new certifications.</p>
-        <br>
-        <p><a class="btn btn-secondary" href="registerCert.html" role="button">Register &raquo;</a></p>
+      <div class="col-md-6">
+        <div class="option-box">
+          <div class="row personal-info">
+            <div class="col-md-12 col-xs-12">
+              <h6>Member Registration</h6>
+            </div>
+          <p>On this page, you can register new volunteers</p>
+          <p><a class="btn btn-danger" href="register.html" role="button">Register &raquo;</a></p>
+        </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <h2>Reporting</h2>
-        <p>This page will allow the user to basic reports on the volunteer and certification data.</p>
-        <p><a class="btn btn-secondary" href="reporting.html" role="button">Reporting &raquo;</a></p>
+
+      <div class="col-md-6">
+        <div class="option-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Certificates</h6>
+            </div>
+          <p>On this page, you can register new certifications</p>
+          <p><a class="btn btn-danger" href="registerCert.html" role="button">Register &raquo;</a></p>
+        </div>
+        </div>
       </div>
+
+      <div class="col-md-6">
+        <div class="option-box reporting">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Reporting</h6>
+            </div>
+          <p>This page will allow you to view basic reports on the volunteer and certification data</p>
+          <p><a class="btn btn-danger btnReport" href="reporting.html" role="button">Reporting &raquo;</a></p>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="option-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Members</h6>
+            </div>
+          <p>This page will allow you to see which certifications a member has</p>
+          <p><a class="btn btn-danger" href="members.html" role="button">Member &raquo;</a></p>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="option-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Certifications</h6>
+            </div>
+          <p>This page will allow you to see which members have certifications</p>
+          <p><a class="btn btn-danger" href="certs.html" role="button">Certifications &raquo;</a></p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+</section> -->
+
+<section id="homepage">
+  <div class="container">
+    <div class="title-block">
+      <h2>Home Page Options</h2>
+      <p>Here's everything you can do on this page</p>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h2>Members</h2>
-        <p>This page will allow the user to see which certifications a member has. </p>
-        <br>
-        <p><a class="btn btn-secondary" href="members.html" role="button">Member &raquo;</a></p>
-      </div>
-      <div class="col-md-6">
-        <h2>Certifications</h2>
-        <p>This page will allow the user to see which membershave a certification. </p>
-        <br>
-        <p><a class="btn btn-secondary" href="certs.html" role="button">Certifications &raquo;</a></p>
+        <div class="hp-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Member Registration</h6>
+            </div>
+          </div>
+          <p>On this page, you can register new volunteers</p>
+          <p><a class="btn btn-danger" href="register.html" role="button">Register &raquo;</a></p>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+        <div class="hp-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Certifications</h6>
+            </div>
+          </div>
+          <p>On this page, you can register new certifications</p>
+          <p><a class="btn btn-danger" href="registerCert.html" role="button">Register &raquo;</a></p>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+        <div class="hp-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Reporting</h6>
+            </div>
+          </div>
+          <p>This page will allow you to view basic reports on the volunteer and certification data</p>
+          <p><a class="btn btn-danger btnReport" href="reporting.html" role="button">Reporting &raquo;</a></p>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+        <div class="hp-box">
+          <div class="row personal-info">
+            <div class="col-md-10 col-xs-10">
+              <h6>Detailed Lists</h6>
+            </div>
+          </div>
+          <p>This page will allow you to see which members have certifications and which certifications have been done by members</p>
+
+        </div>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+
+      <div class="col-md-3">
+        <img src="images/firetruck1.jpg" height="400px" width="500px">
       </div>
     </div>
 
     <hr>
 
   </div> <!-- /container -->
-
+  <footer>
+    <hr>
+    <p align="center"> Oconee County Fire Rescue</p>
+    </footer>
 
 </body>
 </html>
