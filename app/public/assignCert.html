@@ -56,13 +56,13 @@
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="certAgency">Certification Name</label>
-                  <select v-model="newCertMember.certificationGuid">
+                  <select v-model="newCertMember.certificationGuid" required>
                     <option v-for="cert in certifications" :value="cert.certificationGuid">{{ cert.certificationName }}</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="certAgency">Member Name</label>
-                  <select v-model="newCertMember.memberGuid">
+                  <select v-model="newCertMember.memberGuid" required>
                     <option v-for="member in members" :value="member.memberGuid">{{ member.firstName }} {{ member.lastName }}</option>
                   </select>
                 </div>
@@ -70,7 +70,7 @@
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="expPeriod">Expiration Date</label>
-                  <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="newCertMember.certExpDate">
+                  <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="newCertMember.certExpDate" required>
                 </div>
               </div>
             <button type="submit" class="btn btn-primary">Complete Certification</button>
@@ -105,13 +105,13 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="certAgency">Certification Name</label>
-                <select v-model="selectedCertMember.certificationGuid">
+                <select v-model="selectedCertMember.certificationGuid" required>
                   <option v-for="cert in certifications" :value="cert.certificationGuid">{{ cert.certificationName }}</option>
                 </select>
               </div>
               <div class="form-group col-md-6">
                 <label for="certAgency">Member Name</label>
-                <select v-model="selectedCertMember.memberGuid">
+                <select v-model="selectedCertMember.memberGuid" required>
                   <option v-for="member in members" :value="member.memberGuid">{{ member.firstName }} {{ member.lastName }}</option>
                 </select>
               </div>
@@ -119,7 +119,7 @@
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="expPeriod">Expiration Date</label>
-                <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="selectedCertMember.certExpDate">
+                <input class="form-control" type='date' placeholder="Experation Date" id="expDate" v-model="selectedCertMember.certExpDate" required>
               </div>
             </div>
           <button type="submit" class="btn btn-primary">Delete Certification</button>

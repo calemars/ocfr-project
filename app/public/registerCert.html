@@ -56,17 +56,17 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="certName">Certification Name</label>
-                  <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName">
+                  <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName" required>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="certAgency">Certification Agency</label>
-                  <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency">
+                  <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="expPeriod">Expiration Period</label>
-                  <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
+                  <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod" required>
                 </div>
               </div>
             <button type="submit" class="btn btn-primary">Complete Certification</button>
@@ -101,17 +101,17 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="certName">Certification Name</label>
-                <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName">
+                <input class="form-control" id="certificationName" placeholder="Certification Name" v-model="certification.certificationName" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="certAgency">Certification Agency</label>
-                <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency">
+                <input class="form-control" id="certifyingAgency" placeholder="Certification Agency" v-model="certification.certifyingAgency" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="expPeriod">Expiration Period</label>
-                <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod">
+                <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod" required>
               </div>
             </div>
           <button type="submit" class="btn btn-primary">Edit Certification</button>
