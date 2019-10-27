@@ -54,19 +54,17 @@
             <thead>
               <tr>
                 <th>Member Name</th>
-                <th>Radio #</th>
+                <th>Position Title</th>
+                <th>Email</th>
                 <th>Station #</th>
-                <th>Expiry Date</th>
-                <th>Expired (Y/N)</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="e in employees" @click="handleRowClick(e)">
                 <td>{{e.firstName}} {{e.lastName}}</td>
-                <td>{{e.radioNumber}}</td>
+                <td>{{e.positionTitle}}</td>
+                <td>{{e.email}}</td>
                 <td>{{e.stationNumber}}</td>
-                <td>{{e.expiry}}</td>
-                <td>{{e.expired}}</td>
               </tr>
             </tbody>
           </table>
