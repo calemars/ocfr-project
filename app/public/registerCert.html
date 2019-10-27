@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="index.html">OCFR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
     <div class="row">
       <div id="mainContent" class="col-md-12">
         <div id="registerCert">
-          <div class="row"><button type="button"class="btn btn-primary" onclick="addCertification()">Register Certification</button></div><br>
+          <div class="row"><button type="button"class="btn btn-danger" onclick="addCertification()">Register Certification</button></div><br>
             <form id="certification" @submit.prevent="handleCreate"  style="display:none">
             </br>
               <div class="form-row">
@@ -69,7 +69,7 @@
                   <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod" required>
                 </div>
               </div>
-            <button type="submit" class="btn btn-primary">Complete Certification</button>
+            <button type="submit" class="btn btn-danger">Complete Certification</button>
             </form>
 
 
@@ -114,16 +114,19 @@
                 <input class="form-control" placeholder="Standard Experation" id="expPeriod" v-model="certification.expPeriod" required>
               </div>
             </div>
-          <button type="submit" class="btn btn-primary">Edit Certification</button>
+          <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Edit Certification</button>
           </form>
         </br>
-          <form @submit.prevent="handleDelete"><button class="btn btn-primary">Delete Certification</button></form>
+          <form @submit.prevent="handleDelete"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Certification</button></form>
           </div>
         </div>
 </br>
 </br>
 
-
+<footer>
+    <hr>
+    <p align="center"> Oconee County Fire Rescue</p>
+    </footer>
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
           <script src="js/certs.app.js"></script>
