@@ -33,14 +33,14 @@ var certificationApp = new Vue({
       expPeriod: ''
     }
   },
-  fetchemployees(){
-    fetch('api/members/getMembers.php')
-    .then(response => response.json())
-    .then(json => { certificationApp.employees = json })
-    }
+  // fetchemployees(){
+  //   fetch('api/members/getMembers.php')
+  //   .then(response => response.json())
+  //   .then(json => { certificationApp.employees = json })
+  //   }
 },
   created() {
     this.fetchCertifications();
-    this.fetchemployees();
+    //this.fetchemployees();
   }
 });

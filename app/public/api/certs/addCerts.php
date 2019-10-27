@@ -16,6 +16,13 @@ $stmt->execute([
   $_POST['certificationName'],
   $_POST['expPeriod']
 ]);
+
+
+$stmt = $db->prepare('SELECT * from Certifications;');
+$stmt->execute();
+$certifications = $stmt->fetchAll();
+// Step 3: Convert to JSON
+$json = json_encode($certifications, JSON_PRETTY_PRINT);
 // Step 4: Output
-//header('HTTP/1.1 303 See Other');
-//header('Location: ../api/');
+header('Content-Type: application/json');
+echo $json;

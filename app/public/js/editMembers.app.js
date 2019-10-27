@@ -24,7 +24,8 @@ var employeesEditApp = new Vue({
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-
+      .then(response => response.json())
+      .then(json => { employeesApp.employees = json })
       this.handleReset();
     },
     handleReset() {
@@ -44,7 +45,8 @@ var employeesEditApp = new Vue({
         gender: '',
         city: '',
         state: '',
-        zip: ''
+        zip: '',
+        dateJoined:''
       }
     }
 

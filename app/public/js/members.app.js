@@ -20,7 +20,7 @@ var employeesApp = new Vue({
         }
       })
       .then( response => response.json() )
-      .then( json => { employeesApp.employees.push( json[0] ) })
+      .then( json => { employeesApp.employees = json })
      this.handleReset();
       },
       handleReset() {
@@ -40,11 +40,19 @@ var employeesApp = new Vue({
           gender: '',
           city: '',
           state: '',
-          zip: ''
+          zip: '',
+          dateJoined: ''
         }
       },
     handleRowClick(employeeData) {
       employeesEditApp.employeeData = employeeData;
+      fetch('api/membersCert.php', {
+      method:'POST',
+      body: JSON.stringify(employeeData),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
     }
 }, // end methods
     created() {

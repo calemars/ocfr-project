@@ -1,15 +1,14 @@
 
-var expriedCertApp = new Vue({
-  el: '#expriedCertApp',
+var memberYearApp = new Vue({
+  el: '#memberYearApp',
   data: {
     members: []
-
   },
   methods: {
     fetchReports() {
-      fetch('api/reports.php')
+      fetch('api/membersByYear.php')
       .then(response => response.json())
-      .then(json => { expriedCertApp.members = json })
+      .then(json => { memberYearApp.members = json })
   }
 },
   created() {

@@ -2,13 +2,27 @@
 
 $db = DbConnection::getConnection();
 
-$stmt = $db->prepare(
+$stmt1 = $db->prepare(
+  "delete from MemberCert where memberGuid=?;"
+);
+
+$stmt1->execute([
+  $_POST['memberGuid']
+]);
+
+$stmt2 = $db->prepare(
   "delete from Members where memberGuid=?;"
 );
 
-$stmt->execute([
+$stmt2->execute([
   $_POST['memberGuid']
 ]);
+
+$stmt = $db->prepare('SELECT * from Members;');
+$stmt->execute();
+$members = $stmt->fetchAll();
+// Step 3: Convert to JSON
+$json = json_encode($members, JSON_PRETTY_PRINT);
 // Step 4: Output
-//header('HTTP/1.1 303 See Other');
-//header('Location: ../employee/?personid='.$personid);
+header('Content-Type: application/json');
+echo $json;

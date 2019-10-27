@@ -24,7 +24,8 @@ var certEditApp = new Vue({
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-
+      .then(response => response.json())
+      .then(json => { registerCert.certifications = json })
       this.handleReset();
     },
     handleReset() {

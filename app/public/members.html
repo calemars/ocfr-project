@@ -24,10 +24,15 @@
           <a href="registerCert.html" class="dropdown-item">Certifications</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reporting.html">Reporting</a>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reporting</a>
+        <div class="dropdown-menu">
+          <a href="expiredCerts.html" class="dropdown-item">Expired Certifications</a>
+          <a href="memberByStation.html" class="dropdown-item">List Members by Station</a>
+          <a href="memberByYear.html" class="dropdown-item">List Members by Year</a>
+        </div>
       </li>
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Detailed View</a>
         <div class="dropdown-menu">
           <a href="certs.html" class="dropdown-item">Certifications</a>
@@ -41,32 +46,10 @@
 <div class="container">
   <div class="row">
     <div id="mainContent" class="col-md">
-
-        <form @submit.prevent="handleSubmit">
-          <div class="form-group row">
-            <label for="selectReport" class="col-sm-2 col-form-label"><br>Select Member</label>
-             <div class="col-sm-10">
-               <br>
-              <select name="report" id="Report">
-                <option></option>
-                <option value="cpr">Caleb Marsh</option>
-                <option value="due regard">Kevin Bacon</option>
-                <option value="emr">Zubia Rauf</option>
-                <option value="emt">Kunal Vasavada</option>
-                <option value="emtadv">Darth Vader</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Filter Table</button>
-            </div>
-          </div>
-          </form>
-          </br>
+      <h3>Please click on a member to see that members current certificates.</h3>
+    </br>
           <h1>Member Information</h1>
-          <table class="table table-sm table-hover" id="employeesApp">
+          <table class="table table-sm table-hover" id="employeesCertApp">
             <thead>
               <tr>
                 <th>Member Name</th>
@@ -77,7 +60,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="e in employees" @click="handleRowClick(patient)">
+              <tr v-for="e in employees" @click="handleRowClick(e)">
                 <td>{{e.firstName}} {{e.lastName}}</td>
                 <td>{{e.radioNumber}}</td>
                 <td>{{e.stationNumber}}</td>
@@ -91,13 +74,15 @@
           <table class="table table-sm table-hover" id="certificationApp">
             <thead>
               <tr>
+                <th>Member Name</th>
                 <th>Certification Name</th>
                 <th>Certifying Agency</th>
                 <th>Standard Expiry</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="certification in certifications" @click="handleRowClick(patient)">
+              <tr v-for="certification in certifications">
+                <td>{{ certification.firstName}} {{ certification.lastName}}</td>
                 <td>{{ certification.certificationName }}</td>
                 <td>{{ certification.certifyingAgency }}</td>
                 <td>{{ certification.expPeriod }}</td>
@@ -112,21 +97,13 @@
 
           <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
           <script src="js/index.js"></script>
-          <script src="js/firefighter.app.js"></script>
-          <script src="js/fetchMembers.app.js"></script>
-          <script src="js/test.app.js"></script>
-          <script src="js/reporting.app.js"></script>
           <script src="js/certifications.app.js"></script>
-          <script src="js/members.app.js"></script>
+          <script src="js/memberCert.app.js"></script>
 
 
-          <script src="js/tablesort.min.js"></script>
-
-        <!--  tablesort plugin from: https://github.com/tristen/tablesort //-->
 
           <script>
 
-          new Tablesort(document.getElementById('taskTable'));
 
           </script>
 </body>

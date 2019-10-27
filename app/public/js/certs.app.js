@@ -20,7 +20,7 @@ var registerCert = new Vue({
         }
       })
       .then( response => response.json() )
-      .then( json => { registerCert.certifications.push( certification ) })
+      .then( json => { registerCert.certifications = json })
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);

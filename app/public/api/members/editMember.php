@@ -3,7 +3,7 @@
 $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
-  "update Members set firstName=?, lastName=?, dob=?, gender=?, isActive=?, email=?, mobilePhoneNum=?, positionTitle=?, stationNumber=?, radioNumber=?, address=?, city=?, state=?, zip=? where memberGuid=?;"
+  "update Members set firstName=?, lastName=?, dob=?, gender=?, isActive=?, email=?, mobilePhoneNum=?, positionTitle=?, stationNumber=?, radioNumber=?, address=?, city=?, state=?, zip=?, dateJoined=? where memberGuid=?;"
 );
 
 $stmt->execute([
@@ -21,6 +21,7 @@ $stmt->execute([
   $_POST['city'],
   $_POST['state'],
   $_POST['zip'],
+  $_POST['dateJoined'],
   $_POST['memberGuid']
 ]);
 // Step 4: Output

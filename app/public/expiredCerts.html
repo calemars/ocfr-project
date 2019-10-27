@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Certifications</title>
+  <title>Reports</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -43,63 +43,52 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="row">
-    <div id="mainContent" class="col-md">
-      <div id="certificationApp">
-        <h3>Please click on a certification to see the members with that certification listed below.</h3>
 
-          </br>
-          <h1>Certification Information</h1>
-            <table id="certificationApp" class="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th>Certification Name</th>
-                  <th>Certifying Agency</th>
-                  <th>Standard Expiry</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="certification in certifications" @click="handleRowClick(certification)">
-                  <td>{{ certification.certificationName }}</td>
-                  <td>{{ certification.certifyingAgency }}</td>
-                  <td>{{ certification.expPeriod }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </br>
+  <div class="container" id="expiredCertApp">
+    <div class="row">
+      <div id="mainContent" class="col-md">
+
+        <p><h4>Certification Filter</h4></p>
+        <div class="filter" id="expiredCertApp">
+          <select v-model="filter.certificationName">
+            <option value=''>(all)</option>
+            <option v-for="certification in certifications">{{ certification.certificationName }}</option>
+          </select>
         </div>
 
-          <div id="certificationApp"><h1>Member Information</h1></div>
-            <table class="table table-sm table-hover" id="employeesApp">
-              <thead>
-                <tr>
-                  <th>Member Name</th>
-                  <th>Radio #</th>
-                  <th>Station #</th>
-                  <th>Certification Name</th>
-                  <th>Expiry Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="e in employees">
-                  <td>{{e.firstName}} {{e.lastName}}</td>
-                  <td>{{e.radioNumber}}</td>
-                  <td>{{e.stationNumber}}</td>
-                  <td>{{e.certificationName}}</td>
-                  <td>{{e.certExpDate}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <h1>Members with Expired Certificates</h1>
+          <table id="expiredCertApp" class="table table-sm table-hover">
+            <thead>
+              <tr>
+                <th>Certification</th>
+                <th>Exp. Date</th>
+                <th>Name</th>
+                <th>Station</th>
+                <th>Radio Number</th>
+                <th>Email Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="certification in certifications" v-if="filter.certificationName=='' || filter.certificationName == certification.certificationName">
+               <td>{{ certification.certificationName }}</td>
+               <td>{{ certification.certExpDate }}</td>
+               <td>{{ certification.firstName }} {{ certification.lastName }}</td>
+               <td>{{ certification.stationNumber }}</td>
+               <td>{{ certification.radioNumber}}</td>
+               <td>{{ certification.email}}</td>
+             </tr>
+            </tbody>
+          </table>
+</div>
+</div>
+</div>
 
 
-          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-          <script src="js/certifications.app.js"></script>
-          <script src="js/members.app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/expiredCert.app.js"></script>
+
 </body>
 </html>

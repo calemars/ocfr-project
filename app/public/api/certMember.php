@@ -3,12 +3,12 @@
 
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
-$stmt = $db->prepare("SELECT m.*, c.certificationName, mc.certExpDate
+$stmt = $db->prepare("SELECT c.*, m.firstName, m.lastName
 FROM Members as m, Certifications as c, MemberCert as mc
-where c.certificationGuid=mc.certificationGuid and m.memberGuid=mc.memberGuid and c.certificationGuid=? ;");
+where c.certificationGuid=mc.certificationGuid and m.memberGuid=mc.memberGuid and m.memberGuid=? ;");
 
 $stmt->execute([
-  $_POST['certificationGuid']
+  $_POST['memberGuid']
 ]);
 $members = $stmt->fetchAll();
 // Step 3: Convert to JSON
